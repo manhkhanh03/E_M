@@ -51,6 +51,9 @@
         <div id="editorjs"></div>
     </div>
     <div onclick="myFunction()" class="btn">Save</div>
+
+    <div onclick="getArticles()" class="btn">Show</div>
+
     <script src="/js/editerjs.js">
         
     </script>

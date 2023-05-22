@@ -12,11 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->string('id', 20);
+            $table->id();
             $table->unsignedBigInteger('user_id')->default(2);
             $table->unsignedBigInteger('theme_type_id')->default(1);
             $table->unsignedBigInteger('url_id')->default(1);
             $table->unsignedBigInteger('status_id')->default(0);
+            $table->string('mode_id');
+            $table->string('type');
+            $table->integer('location');
             $table->integer('hot')->default(0);
             $table->timestamps();
         });

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Subheadline extends Model
 {
     use HasFactory;
-    protected $fillable = ['post_id', 'subheadline', 'location'];
+    protected $fillable = ['id', 'subheadline'];
 }

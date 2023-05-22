@@ -1,0 +1,40 @@
+#categories {
+    font-size: 30px;
+    padding-top: 30px;
+}
+
+.list-post {
+    position: relative;
+}
+
+.list-post::after {
+    /* border-left: 2px solid var(--color); */
+    height: 100%;
+    content: '';
+    width: 2px;
+    background-color: var(--color);
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+
+.post-item {
+    display: block;
+    padding-left: 10px;
+}
+
+.post-item::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color);
+    position: absolute;
+    top: 0;
+    left: -3px;
+}
+
+.post-right h3 {
+    font-size: 22px;
+}

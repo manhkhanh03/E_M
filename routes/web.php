@@ -18,3 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('editer', 'App\Http\Controllers\Post@index');
+Route::get('archived', 'App\Http\Controllers\Post@archived');
+Route::get('post', 'App\Http\Controllers\Post@post');
+Route::get('articles/{id}', 'App\Http\Controllers\Post@articles');

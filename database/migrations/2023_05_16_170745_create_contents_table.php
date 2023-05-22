@@ -12,10 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('contents', function (Blueprint $table) {
-            $table->id();
-            $table->string('post_id', 20);
+            $table->string('id', 20);
             $table->text('content');
-            $table->integer('location');
             $table->timestamps();
         });
     }

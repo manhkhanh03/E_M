@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Header extends Model
 {
     use HasFactory;
-    protected $fillable = ['post_id', 'header', 'location'];
+    protected $fillable = ['id', 'header'];
 }

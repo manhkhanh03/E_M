@@ -134,15 +134,13 @@ function randomString() {
 function myFunction() {
     editorConfig.save()
         .then(savedData => {
-            const postId = randomString();
             const data = {
-                id: postId,
-                user_id: 2,
-                theme_type_id: 2,
-                url_id: 1,
-                status_id: 2,
-                hot: 0
-            }
+                author_id: 1,
+                categorie_id: 2,
+                JSON: JSON.stringify(savedData.blocks),
+                hot: 0,
+                status_id: 2
+            };
             const options = {
                 method: 'POST',
                 headers: {
@@ -150,58 +148,22 @@ function myFunction() {
                 },
                 body: JSON.stringify(data)
             }
-            fetch('http://127.0.0.1:8000/api/post', options)
-            return [savedData, postId]
+            console.log(data)
+            console.log(savedData)
+            fetch('http://127.0.0.1:8000/api/articles', options)
+                .then(response => response.json())
+                .then(data => { 
+                    console.log(data.blocks)
+                })
         })
-        .then((data) => {
-            
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
+}
 
-            data[0].blocks.forEach((block, index) => {
-                console.log(block)
-                if (block.type === 'header') {
-                    if (block.data.level === 1) {
-                        let text = {
-                            post_id: data[1],
-                            header: block.data.text,
-                            location: index
-                        }
-                        options.body = JSON.stringify(text)
-                        fetch('http://127.0.0.1:8000/api/header', options)
-                    } else {
-                        let text = {
-                            post_id: data[1],
-                            subheadline: block.data.text,
-                            location: index
-                        }
-                        options.body = JSON.stringify(text)
-                        fetch('http://127.0.0.1:8000/api/subheadline', options)
-                    }
-                }
-                else if (block.type === 'image') {
-                    let img = {
-                        mode_id: data[1],
-                        url: block.data.url,
-                        caption: block.data.caption,
-                        location: index,
-                        type: 1
-                    }
-                    options.body = JSON.stringify(img)
-                    fetch('http://127.0.0.1:8000/api/images', options)
-                } else if (block.type === 'paragraph') {
-                    let content = {
-                        post_id: data[1],
-                        content: block.data.text,
-                        location: index
-                    }
-                    options.body = JSON.stringify(content)
-                    fetch('http://127.0.0.1:8000/api/contents', options)
-                }
+function getArticles() {
+    fetch('http://127.0.0.1:8000/api/articles')
+        .then(response => response.json())
+        .then(data => {
+            JSON.parse(data[0].JSON).forEach(element => {
+                console.log(element.data)
             });
         })
 }

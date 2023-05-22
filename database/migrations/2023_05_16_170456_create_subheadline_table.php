@@ -12,10 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('subheadlines', function (Blueprint $table) {
-            $table->id();
-            $table->string('post_id', 20);
+            $table->string('id', 20);
             $table->text('subheadline');
-            $table->integer('location');
             $table->timestamps();
         });
     }
